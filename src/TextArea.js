@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-const restricted_word = "illegal, unnecessary, non xx, Ram"
+const restricted_word = "illegal,unnecessary,non xx,Ram"
 const TextArea = () => {
   const $textarea = useRef(null);
   var $backdrop = useRef(null);
@@ -10,9 +10,9 @@ const TextArea = () => {
       if(restricted_word){
          bad_word = restricted_word.toLowerCase().split(",").join('|');
       }
+      console.log("sdsdad", bad_word)
      const regix = new RegExp('\\b(' + bad_word + ')\\b', "gi")
     text = text
-      .replace(/\n$/g, "\n\n")
       .replace(regix, "<mark>$&</mark>");
     return text;
   }
@@ -37,7 +37,6 @@ const TextArea = () => {
           <div className="highlights" ref={$highlights}></div>
         </div>
         <textarea
-          spellCheck="false"
           ref={$textarea}
           onChange={handleChange}
           onScroll={handleScroll}
